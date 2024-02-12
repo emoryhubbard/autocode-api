@@ -1,4 +1,12 @@
-import ReactSwagger from './react-swagger';
+export default async function IndexPage() {
+  return (
+    <section className="container">
+      Autocode API Index
+    </section>
+  );
+}
+
+/*import ReactSwagger from './react-swagger';
 import { createSwaggerSpec } from 'next-swagger-doc';
 
 export default async function IndexPage() {
@@ -33,3 +41,4 @@ const getApiDocs = async () => {
   });
   return spec;
 };
+*/
