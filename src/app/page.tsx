@@ -1,5 +1,5 @@
-import { getApiDocs } from './lib/swagger';
 import ReactSwagger from './react-swagger';
+import { createSwaggerSpec } from 'next-swagger-doc';
 
 export default async function IndexPage() {
   const spec = await getApiDocs();
@@ -9,3 +9,27 @@ export default async function IndexPage() {
     </section>
   );
 }
+
+const getApiDocs = async () => {
+  const spec = createSwaggerSpec({
+    apiFolder: 'src/app/api', // define api folder under app folder
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Autocode API Docs',
+        version: '1.0',
+      },
+      components: {
+        securitySchemes: {
+          BearerAuth: {
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT',
+          },
+        },
+      },
+      security: [],
+    },
+  });
+  return spec;
+};
